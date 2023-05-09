@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pythonmonitoring-app
+  labels:
+    app: pythonapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pythonapp
+  template:
+    metadata:
+      labels:
+        app: pythonapp
+    spec:
+      containers:
+        - name: obinna
+          image: 612500737416.dkr.ecr.us-east-1.amazonaws.com/obinna:1.1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
